@@ -1,6 +1,10 @@
 node {
     def app
 
+    environment {
+            image_name =
+            DB_ENGINE    = 'sqlite'
+    }
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
@@ -11,8 +15,8 @@ node {
 
     stage('Build image') {
 
-
-        app = docker.build("fatninja/worldhello")
+        sh 't=`echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'`'
+        app = docker.build("${t}")
     }
 
     stage('Test image') {
