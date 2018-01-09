@@ -15,7 +15,7 @@ node {
 
     stage('Build image') {
 
-        sh 't=`echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'`'
+        def t = sh 'echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'
         app = docker.build("${t}")
     }
 
