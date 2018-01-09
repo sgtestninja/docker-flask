@@ -5,14 +5,14 @@ node {
         /* Let's make sure we have the repository cloned to our workspace */
 
         /*checkout scm*/
-        sh 'echo $giturl'
+        sh 'git clone $giturl'
     }
 
 /*
     stage('Build image') {
 
 
-        app = docker.build("fatninja/helloworld")
+        app = docker.build("fatninja/testhello")
     }
 
     stage('Test image') {
