@@ -21,7 +21,7 @@ node {
               script: "echo $giturl  | awk -F/ '{print \$NF}' | awk -F. '{print \$1}'",
               returnStdout: true
             ).trim()
-         sh 'echo Value is ${KEYVALUE}'
+         echo "Value is ${KEYVALUE}"
       /*   sh 'echo "TEST=$t" > envFile.properties' */
          app = docker.build("fatninja/$KEYVALUE")
     }
