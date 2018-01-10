@@ -18,7 +18,7 @@ node {
     stage('Build image') {
 
          KEYVALUE = sh (
-              script: "echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'",
+              script: "echo $giturl  | awk -F/ '{print \$NF}' | awk -F. '{print \$1}'",
               returnStdout: true
             ).trim()
          sh 'echo Value is $KEYVALUE'
