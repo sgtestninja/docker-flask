@@ -13,10 +13,15 @@ node {
     }
 
 
+
+
     stage('Build image') {
 
+/*
         def t = sh 'echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'
         app = docker.build("${t}")
+  */
+       sh 'echo $HELLO'
     }
 
     stage('Test image') {
