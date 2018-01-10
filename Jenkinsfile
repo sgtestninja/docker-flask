@@ -17,11 +17,13 @@ node {
 
     stage('Build image') {
 
-         def t = sh 'echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'
-         sh 'echo Value is $t'
-         sh 'echo "TEST=$t" > envFile.properties'
-        app = docker.build("fatninja/$TEST")
-       sh 'echo $HELLO'
+         KEYVALUE = sh (
+              script: "echo $giturl  | awk -F/ '{print $NF}' | awk -F. '{print $1}'",
+              returnStdout: true
+            ).trim()
+         sh 'echo Value is $KEYVALUE'
+      /*   sh 'echo "TEST=$t" > envFile.properties' */
+         app = docker.build("fatninja/$KEYVALUE")
     }
 
     stage('Test image') {
